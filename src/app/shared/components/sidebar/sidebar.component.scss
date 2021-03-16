@@ -1,0 +1,18 @@
+nav {
+  height: 100%;
+  padding: 10px 20px;
+  .navigation {
+    text-align: center;
+    img {
+      height: 60px;
+    }
+    ul {
+      list-style-type: none;
+      padding-inline-start: 0;
+      text-align: left;
+      li {
+        margin: 30px 0;
+      }
+    }
+  }
+}

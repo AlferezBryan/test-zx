@@ -1,0 +1,21 @@
+<main>
+  <div>
+    Nombre del flujo:
+    <input type="text">
+  </div>
+  <div class="container">
+    <div fxLayout="row" fxLayoutGap="20px" class="tabs">
+      <div *ngFor="let item of tabs; let i = index" [ngClass]="{'active' : currentTab === i}" (click)="currentTab = i">{{item}}</div>
+    </div>
+    <app-stages *ngIf="currentTab === 0"></app-stages>
+    <app-actions *ngIf="currentTab === 1"></app-actions>
+    <!-- <app-functions *ngIf="currentTab === 2"></app-functions>
+    <app-form *ngIf="currentTab === 3"></app-form>
+    <app-template *ngIf="currentTab === 4"></app-template>
+    <app-sla *ngIf="currentTab === 5"></app-sla>
+    <app-notifications *ngIf="currentTab === 6"></app-notifications>
+    <app-groups *ngIf="currentTab === 7"></app-groups> -->
+    <button>Guardar</button>
+    <button (click)="currentTab = currentTab + 1">Siguiente</button>
+  </div>
+</main>

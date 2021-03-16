@@ -1,0 +1,43 @@
+header {
+  height: 80px;
+  padding: 0 20px;
+  border-left: 2px var(--gray) solid;
+  .title h1 {
+    font-weight: 500;
+    margin: 0;
+  }
+  .options {
+    .timer {
+      height: 40px;
+      padding: 0 15px 0 20px;
+      border: 1px lightgray solid;
+      border-radius: 999px;
+      & *:nth-child(-n+2) {
+        color: var(--primary);
+      }
+    }
+    .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 20px;
+      overflow: hidden;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .button {
+      button {
+        width: 40px;
+        min-width: 0;
+        height: 40px;
+        padding: 0;
+        background-color: var(--secondary);
+        color: #fff;
+        border: 0;
+        border-radius: 5px;
+      }
+    }
+  }
+}

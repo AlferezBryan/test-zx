@@ -1,0 +1,43 @@
+<div>
+    <p class="section-title">Nombra las etapas de tu flujo</p>
+    <div class="actions-body">
+      <div class="actions-container">
+        <div
+          fxLayout="row"
+          class="actions-list"
+        >
+          <div *ngFor="let item of actions; let i = index" class="actions" [ngClass]="{'active': item.name}">
+            <div (mouseup)="drop1(i)">{{ item.name }}</div>
+            <div class="options">
+              <mat-icon>settings</mat-icon>
+            </div>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div *ngFor="let item of stages; let i = index" class="stages" [ngStyle]="{ 'zIndex': stages.length - i }">
+            <span class="text">{{ item.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="subtitle">Arrastra las acciones que quieras agregar a tu flujo</p>
+      <div
+        class="newOptions-list"
+        cdkDropList
+        (cdkDropListDropped)="drop2($event)"
+        cdkDropListSortingDisabled
+      >
+        <div *ngFor="let item of newOptions" >
+          <div (mousedown)="drag1(item)" class="newOptions" cdkDrag>
+            <div>{{ item.name }}</div>
+          </div>
+        </div>
+        <div class="newOptions">
+          <div>
+            <input type="text">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

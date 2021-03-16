@@ -1,1 +1,144 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$test-zx-primary: mat-palette($mat-indigo);
+$test-zx-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$test-zx-warn: mat-palette($mat-red);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$test-zx-theme: mat-light-theme((
+  color: (
+    primary: $test-zx-primary,
+    accent: $test-zx-accent,
+    warn: $test-zx-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($test-zx-theme);
+
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+:root {
+  --primary: #139cfa;
+  --secondary: #12d7a9;
+  --red: #fe7e7d;
+  --green: #9fd895;
+  --gray: #eff2f8;
+}
+.tabs {
+  div {
+    padding: 5px 0;
+    border-bottom: 3px transparent solid;
+    font-weight: 500;
+    cursor: pointer;
+    &.active {
+      border-bottom-color: var(--secondary);
+    }
+  }
+}
+
+input:focus {
+  outline: none;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 18px;
+  margin: 20px 0 !important;
+}
+
+.stages-container {
+  overflow-x: auto;
+  padding-bottom: 10px;
+  > div {
+    width: fit-content;
+  }
+}
+.stages {
+  display: flex;
+  align-items: center;
+  width: 170px;
+  height: 80px;
+  position: relative;
+  box-shadow: -2px 8px 7px -5px rgba(0,0,0,.1);
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  background: linear-gradient(var(--secondary), var(--primary));
+  overflow-y: hidden;
+  margin-left: 15px;
+  > input,
+  > span.text {
+    width: 100px;
+    border: 1px transparent solid;
+    background: transparent;
+    color: white;
+    padding: 5px 2px;
+    margin-left: 40px;
+    &:focus {
+      border: 1px lightgray solid;
+      background: white;
+      color: black;
+    }
+  }
+  &:nth-child(n+2) {
+    background: linear-gradient(90deg, transparent 40px, #FFF 40px);
+    margin-left: -20px;
+    width: 200px;
+    > input,
+    > span.text {
+      margin-left: 30px;
+      color: black;
+    }
+    &:before {
+      content: '';
+      width: 40px;
+      height: 80px;
+      background-color: transparent;
+    }
+    &:after {
+      content: '';
+      width: 90px;
+      height: 90px;
+      border: 40px #FFF solid;
+      background-color: transparent;
+      position: absolute;
+      top: -45px;
+      left: -100px;
+      border-radius: 100%;
+      box-shadow: inset -2px 0px 7px rgba(0,0,0,.1);
+    }
+  }
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animating {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}

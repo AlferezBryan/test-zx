@@ -1,0 +1,31 @@
+.stages {
+  cursor: move;
+}
+
+.stages-body {
+  display: flex;
+  position: relative;
+  justify-content: center;
+  .floating-options {
+    min-width: 100px;
+    button {
+      width: 30px;
+      height: 30px;
+      border-radius: 30px;
+      padding: 0;
+      min-width: 0;
+      margin-left: 10px;
+      .material-icons {
+        font-size: 18px;
+      }
+      &:first-child {
+        background-color: white;
+        color: black;
+      }
+      &:nth-child(n+2) {
+        background-color: var(--secondary);
+        color: white;
+      }
+    }
+  }
+}

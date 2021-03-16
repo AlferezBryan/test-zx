@@ -1,0 +1,26 @@
+<div>
+  <p class="section-title">Nombra las etapas de tu flujo</p>
+  <div class="stages-body">
+    <div class="stages-container">
+      <div cdkDropList cdkDropListOrientation="horizontal" fxLayout="row" (cdkDropListDropped)="drop($event)">
+        <div *ngFor="let item of stages; let i = index" cdkDrag class="stages" [ngStyle]="{ 'zIndex': stages.length - i }">
+          <input type="text" [(ngModel)]="item.name">
+        </div>
+      </div>
+    </div>
+    <div class="floating-options">
+      <button mat-raised-button (click)="addStage()">
+        <mat-icon>add</mat-icon>
+      </button>
+      <button mat-raised-button [matMenuTriggerFor]="belowMenu">
+        <mat-icon>settings</mat-icon>
+      </button>
+      <mat-menu #belowMenu="matMenu" yPosition="below">
+        <button mat-menu-item>Perfiles</button>
+        <button mat-menu-item>Editar Capa</button>
+        <button mat-menu-item (click)="deleteStage()">Suprimir</button>
+        <button mat-menu-item>Mover</button>
+      </mat-menu>
+    </div>
+  </div>
+</div>

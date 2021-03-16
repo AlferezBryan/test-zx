@@ -1,0 +1,54 @@
+<main>
+  <div fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutGap="20px" class="tabs">
+      <div [ngClass]="{'active' : currentTab === 0}" (click)="changeView(0)">Activos</div>
+      <div [ngClass]="{'active' : currentTab === 1}" (click)="changeView(1)">Archivados</div>
+    </div>
+    <div class="input-search">
+      <input matInput placeholder="Buscar">
+      <mat-icon>search</mat-icon>
+    </div>
+  </div>
+  <div class="container">
+    <table class="data-table">
+      <tr>
+        <th>Nombre de flujo</th>
+        <th style="width:200px">Fecha Creación</th>
+        <th style="width:170px">Estado</th>
+        <th style="width:130px">Acciones</th>
+      </tr>
+      <tr *ngFor="let item of currentInfo; let i = index">
+        <td>{{item.name}}</td>
+        <td>{{item.date}}</td>
+        <td>
+          <button mat-flat-button [matMenuTriggerFor]="belowMenu" [ngClass]="{'dropdown': true, 'active' : item.status === 1}">
+            <span>{{ item.status === 1 ? 'Activo' : 'Inactivo' }}</span>
+            <mat-icon>arrow_drop_down</mat-icon>
+          </button>
+          <mat-menu #belowMenu="matMenu" yPosition="below">
+            <button mat-menu-item (click)="item.status = 1">Activo</button>
+            <button mat-menu-item (click)="item.status = 0">Inactivo</button>
+          </mat-menu>
+        </td>
+        <td>
+          <div fxLayout="row" fxLayoutGap="20px">
+            <mat-icon>inventory</mat-icon>
+            <mat-icon>content_copy</mat-icon>
+            <a routerLink="/xd" routerLinkActive="active">
+              <mat-icon>edit</mat-icon>
+            </a>
+            <mat-icon>delete</mat-icon>
+          </div>
+        </td>
+      </tr>
+    </table>
+    <div class="more-options">
+      <div class="add-flow">
+        <button mat-raised-button class="button-new-flow">
+          <mat-icon>add</mat-icon>
+        </button>
+        <span>Agregar nuevo workflow</span>
+      </div>
+    </div>
+  </div>
+</main>
